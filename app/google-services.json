@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "946238612373",
+    "firebase_url": "https://vaibhav-traders.firebaseio.com",
+    "project_id": "vaibhav-traders",
+    "storage_bucket": "vaibhav-traders.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946238612373:android:7e286343b42e61c6fd0c9c",
+        "android_client_info": {
+          "package_name": "com.vaibhav.vaibhavtraders"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946238612373-kv4ntjcndev9lqlib1ps1uqs3hhm47nf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZCKPQh6_7Wwgi9nVROhocwWpW_dxCb0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946238612373-kv4ntjcndev9lqlib1ps1uqs3hhm47nf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

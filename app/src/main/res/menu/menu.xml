@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/orderMenu"
+        android:orderInCategory="50"
+        app:showAsAction="ifRoom"
+        android:title="Order">
+
+    </item>
+    <item
+        android:id="@+id/profileMenu"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="My Profile">
+
+    </item>
+
+    <item
+        android:id="@+id/orderHistoryMenu"
+        android:orderInCategory="150"
+        app:showAsAction="never"
+        android:title="Order History">
+
+    </item>
+
+    <item
+        android:id="@+id/refreshMenu"
+        android:orderInCategory="200"
+        app:showAsAction="never"
+        android:title="Refresh">
+
+    </item>
+
+    <item
+        android:id="@+id/helpMenu"
+        android:orderInCategory="300"
+        app:showAsAction="never"
+        android:title="Help">
+
+    </item>
+
+    <item
+        android:id="@+id/contactMenu"
+        android:orderInCategory="400"
+        app:showAsAction="never"
+        android:title="Contact Us">
+
+    </item>
+
+    <item
+        android:id="@+id/aboutMenu"
+        android:orderInCategory="500"
+        app:showAsAction="never"
+        android:title="About App">
+
+    </item>
+
+    <item
+        android:id="@+id/logoutMenu"
+        android:orderInCategory="600"
+        app:showAsAction="never"
+        android:title="Logout">
+
+    </item>
+
+</menu>

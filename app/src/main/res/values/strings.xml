@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Vaibhav Traders</string>
+    <string name="customer_login">Customer Login</string>
+    <string name="admin_login">Admin Login</string>
+    <string name="name">Name</string>
+    <string name="msg_token_fmt" translatable="false">%s</string>
+    <string-array name="Items">
+        <item>bhujiya sev 5rs</item>
+        <item>Aloo Bhujiya 5rs</item>
+        <item>sev murmura 5rs</item>
+        <item>ratlami sev 10rs</item>
+        <item>soan papdi 25rs</item>
+    </string-array>
+
+    <string-array name="Quantities">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vaibhav.vaibhavtraders">
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".TestActivity" />
+        <activity android:name=".UpdateActivity" />
+        <activity android:name=".NextRegistrationActivity" />
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".CustomerProfileActivity" />
+        <activity android:name=".OrderActivity" />
+        <activity android:name=".OrderViewActivity" />
+        <activity android:name=".CustomerRegistrationActivity" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".CustomerLoginActivity" />
+        <activity android:name=".AdminLoginActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
