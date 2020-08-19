@@ -15,6 +15,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.Display;
+import com.github.javiersantos.appupdater.enums.Duration;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -151,6 +155,16 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         orderRef.add(ord);
     }
 
+    private void updateCheckSnackbar(){
+        new AppUpdater(this)
+                .setUpdateFrom(UpdateFrom.JSON)
+                .setUpdateJSON("https://raw.githubusercontent.com/vabbydante/vaibhavtraders/master/abc.json")
+                .setDisplay(Display.SNACKBAR)
+                //.setContentOnUpdateNotAvailable("You've the latest version available!")
+                .setDuration(Duration.NORMAL)
+                .start();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -192,6 +206,10 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
             }
             case R.id.aboutMenu:{
                 startActivity(new Intent(OrderActivity.this, AboutActivity.class));
+                break;
+            }
+            case R.id.updateMenu:{
+                updateCheckSnackbar();
                 break;
             }
             case R.id.logoutMenu:{

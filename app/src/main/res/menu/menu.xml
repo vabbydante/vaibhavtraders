@@ -58,6 +58,14 @@
     </item>
 
     <item
+        android:id="@+id/updateMenu"
+        android:orderInCategory="550"
+        app:showAsAction="never"
+        android:title="Check for Updates">
+
+    </item>
+
+    <item
         android:id="@+id/logoutMenu"
         android:orderInCategory="600"
         app:showAsAction="never"

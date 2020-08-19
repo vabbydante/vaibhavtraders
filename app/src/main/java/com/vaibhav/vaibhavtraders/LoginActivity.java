@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.Display;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.hide();
+
+        updateCheck();
 
         adminLogin = findViewById(R.id.btnAdminLoginStart);
         customerLogin = findViewById(R.id.btnCustomerLoginStart);
@@ -92,5 +97,17 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, ContactActivity.class));
             }
         });
+    }
+    private void updateCheck(){
+        new AppUpdater(this)
+                .setUpdateFrom(UpdateFrom.JSON)
+                .setUpdateJSON("https://raw.githubusercontent.com/vabbydante/vaibhavtraders/master/abc.json")
+                .setDisplay(Display.DIALOG)
+                .setContentOnUpdateAvailable("A new update is available to download. By downloading the latest update you will get the latest features, improvements and bug fixes. \nClick on the 'UPDATE' button below to start downloading the updated app.")
+                .setCancelable(false)
+                .setButtonDoNotShowAgain(null)
+                .setButtonDismiss(null)
+                //.showAppUpdated(true)
+                .start();
     }
 }
