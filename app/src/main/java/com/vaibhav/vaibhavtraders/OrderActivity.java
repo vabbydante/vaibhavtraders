@@ -29,7 +29,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class OrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -37,16 +39,13 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
     String itemTag, quantityTag;
     String date_n = new
             SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(new Date());
-    //String ordersString;
-    //String sample = "data";
-    private Spinner itemSpinner;
     private Spinner quantitySpinner;
+    private Spinner itemSpinner;
     private TextView orderDisplay;
     private TextView displayStore;
     private TextView displayCurrentDate;
-    //private TextView displayCurrentTime;
     private Button addItem;
-    private Button test;
+    //private Button test;
     FirebaseAuth firebaseAuth;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -59,10 +58,41 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //setting up UI Views and setting ArrayAdapters for the spinners. (using the 'string-array' resource from strings.xml)
         itemSpinner = findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Items, android.R.layout.simple_spinner_item);
+
+        //this is a previous method in which i parsed the string from strings.xml to the itemSpinner.
+        /*ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Items, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         itemSpinner.setAdapter(adapter);
-        itemSpinner.setOnItemSelectedListener(this);
+        itemSpinner.setOnItemSelectedListener(this);*/
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        DatabaseReference itemReference = FirebaseDatabase.getInstance().getReference("spinneritems");
+
+        itemReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Is better to use a List, because you don't know the size
+                // of the iterator returned by dataSnapshot.getChildren() to
+                // initialize the array
+                final List<String> items = new ArrayList<>();
+
+                for (DataSnapshot areaSnapshot: dataSnapshot.getChildren()) {
+                    String itemName = areaSnapshot.child("itemName").getValue(String.class);
+                    items.add(itemName);
+                }
+
+                //Spinner itemSpinner = findViewById(R.id.spinner);
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(OrderActivity.this, android.R.layout.simple_spinner_item, items);
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                itemSpinner.setAdapter(dataAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         quantitySpinner = findViewById(R.id.spinner2);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.Quantities, android.R.layout.simple_spinner_item);
@@ -75,11 +105,9 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         displayCurrentDate = findViewById(R.id.tvCurrentDate);
         //displayCurrentTime = findViewById(R.id.tvCurrentTime);
         addItem = findViewById(R.id.btnAddItem);
-        test = findViewById(R.id.btnTest);
+        //test = findViewById(R.id.btnTest);
 
         firebaseAuth = FirebaseAuth.getInstance();  //getting FirebaseAuth instance
-
-        firebaseAuth = FirebaseAuth.getInstance();
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -129,12 +157,12 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
             }
         });
 
-        test.setOnClickListener(new View.OnClickListener() {
+        /*test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(OrderActivity.this, TestActivity.class));
             }
-        });
+        });*/
 
         displayCurrentDate.setText(date_n);
     }
@@ -209,7 +237,9 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
                 break;
             }
             case R.id.updateMenu:{
-                updateCheckSnackbar();
+                //Development stage here!
+                //updateCheckSnackbar();
+                Toast.makeText(this, "Feature under development!", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.logoutMenu:{
