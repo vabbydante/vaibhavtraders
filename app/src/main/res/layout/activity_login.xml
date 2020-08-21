@@ -50,7 +50,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corners"
-        android:text="@string/customer_login"
+        android:text="@string/retailer_login"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold"

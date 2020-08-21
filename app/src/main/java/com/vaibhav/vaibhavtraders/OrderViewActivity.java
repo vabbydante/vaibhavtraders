@@ -43,7 +43,7 @@ public class OrderViewActivity extends AppCompatActivity {
                     String store = orderModel.getStore();
                     String orders = orderModel.getOrders();
 
-                    dataorder += "Date : " + date + "\nStore : " + store + "\nOrders : " + orders + "\n\n";
+                    dataorder += "Date/Time : " + date + "\nStore : " + store + "\nOrders : " + orders + "\n\n";
                 }
                 viewOrders.setText(dataorder);
             }

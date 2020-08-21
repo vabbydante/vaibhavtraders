@@ -38,7 +38,7 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
 
     String itemTag, quantityTag;
     String date_n = new
-            SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(new Date());
+            SimpleDateFormat("dd.MM.yyyy HH:mm:ss a", Locale.getDefault()).format(new Date());
     private Spinner quantitySpinner;
     private Spinner itemSpinner;
     private TextView orderDisplay;
@@ -153,7 +153,7 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                orderDisplay.append("-->  " + itemTag + " - " + quantityTag + " Pkt" + "\n");
+                orderDisplay.append("-->  " + itemTag + " - " + quantityTag + "\n");
             }
         });
 
@@ -225,7 +225,8 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
                 break;
             }
             case R.id.helpMenu:{
-                startActivity(new Intent(OrderActivity.this, HelpActivity.class));
+                //startActivity(new Intent(OrderActivity.this, HelpActivity.class));
+                Toast.makeText(this, "Help section will be added in upcoming update soon", Toast.LENGTH_LONG).show();
                 break;
             }
             case R.id.contactMenu:{

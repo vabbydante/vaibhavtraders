@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +35,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
     private Button otpButton;
     private EditText customerNumber;
     private EditText otpFill;
+    private TextView registerText;
     Button customerRegister;
     private String verificationId;
     FirebaseAuth firebaseAuth;
@@ -55,6 +57,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
         otpFill = findViewById(R.id.etOtpFill);
         customerRegister = findViewById(R.id.btnCustomerRegister);
         progressDialog = new ProgressDialog(this);
+        registerText = findViewById(R.id.textView8);
         //getting instances of currentUser and firebaseAuth..
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -105,6 +108,14 @@ public class CustomerLoginActivity extends AppCompatActivity {
         });
 
         customerRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CustomerLoginActivity.this, CustomerRegistrationActivity.class));
+                finish();
+            }
+        });
+
+        registerText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CustomerLoginActivity.this, CustomerRegistrationActivity.class));

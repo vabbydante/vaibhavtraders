@@ -20,25 +20,117 @@
     <string name="appupdater_channel" translatable="false">appupdater_channel_01</string>
     <string name="message_download_failed">Cannot download at this time!</string>
     <string name="downloading_update_dialog">Downloading update!</string>
-    <string-array name="Items">
+    <string name="retailer_login">Retailer Login</string>
+    <!--<string-array name="Items">
         <item>bhujiya sev 5rs</item>
         <item>Aloo Bhujiya 5rs</item>
         <item>sev murmura 5rs</item>
         <item>ratlami sev 10rs</item>
         <item>soan papdi 25rs</item>
-    </string-array>
+    </string-array>-->
 
     <string-array name="Quantities">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
+        <item>Choose Quantity</item>
+        <item>1 Packet</item>
+        <item>2 Packets</item>
+        <item>3 Packets</item>
+        <item>4 Packets</item>
+        <item>5 Packets</item>
+        <item>6 Packets</item>
+        <item>7 Packets</item>
+        <item>8 Packets</item>
+        <item>9 Packets</item>
+        <item>10 Packets</item>
+        <item>11 Packets</item>
+        <item>12 Packets</item>
+        <item>13 Packets</item>
+        <item>14 Packets</item>
+        <item>15 Packets</item>
+        <item>16 Packets</item>
+        <item>17 Packets</item>
+        <item>18 Packets</item>
+        <item>19 Packets</item>
+        <item>20 Packets</item>
+        <item>21 Packets</item>
+        <item>22 Packets</item>
+        <item>23 Packets</item>
+        <item>24 Packets</item>
+        <item>25 Packets</item>
+        <item>26 Packets</item>
+        <item>27 Packets</item>
+        <item>28 Packets</item>
+        <item>29 Packets</item>
+        <item>30 Packets</item>
+        <item>31 Packets</item>
+        <item>32 Packets</item>
+        <item>33 Packets</item>
+        <item>34 Packets</item>
+        <item>35 Packets</item>
+        <item>36 Packets</item>
+        <item>37 Packets</item>
+        <item>38 Packets</item>
+        <item>39 Packets</item>
+        <item>40 Packets</item>
+        <item>41 Packets</item>
+        <item>42 Packets</item>
+        <item>43 Packets</item>
+        <item>44 Packets</item>
+        <item>45 Packets</item>
+        <item>46 Packets</item>
+        <item>47 Packets</item>
+        <item>48 Packets</item>
+        <item>49 Packets</item>
+        <item>50 Packets</item>
+        <item>51 Packets</item>
+        <item>52 Packets</item>
+        <item>53 Packets</item>
+        <item>54 Packets</item>
+        <item>55 Packets</item>
+        <item>56 Packets</item>
+        <item>57 Packets</item>
+        <item>58 Packets</item>
+        <item>59 Packets</item>
+        <item>60 Packets</item>
+        <item>61 Packets</item>
+        <item>62 Packets</item>
+        <item>63 Packets</item>
+        <item>64 Packets</item>
+        <item>65 Packets</item>
+        <item>66 Packets</item>
+        <item>67 Packets</item>
+        <item>68 Packets</item>
+        <item>69 Packets</item>
+        <item>70 Packets</item>
+        <item>71 Packets</item>
+        <item>72 Packets</item>
+        <item>73 Packets</item>
+        <item>74 Packets</item>
+        <item>75 Packets</item>
+        <item>76 Packets</item>
+        <item>77 Packets</item>
+        <item>78 Packets</item>
+        <item>79 Packets</item>
+        <item>80 Packets</item>
+        <item>81 Packets</item>
+        <item>82 Packets</item>
+        <item>83 Packets</item>
+        <item>84 Packets</item>
+        <item>85 Packets</item>
+        <item>86 Packets</item>
+        <item>87 Packets</item>
+        <item>88 Packets</item>
+        <item>89 Packets</item>
+        <item>90 Packets</item>
+        <item>91 Packets</item>
+        <item>92 Packets</item>
+        <item>93 Packets</item>
+        <item>94 Packets</item>
+        <item>95 Packets</item>
+        <item>96 Packets</item>
+        <item>97 Packets</item>
+        <item>98 Packets</item>
+        <item>99 Packets</item>
+        <item>100 Packets</item>
     </string-array>
 
 </resources>
