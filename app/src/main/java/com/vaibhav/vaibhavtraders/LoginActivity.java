@@ -74,8 +74,8 @@ public class LoginActivity extends AppCompatActivity {
         adminLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(LoginActivity.this, AdminLoginActivity.class));
-                startActivity(new Intent(LoginActivity.this, OrderViewActivity.class));
+                startActivity(new Intent(LoginActivity.this, AdminLoginActivity.class));
+                //startActivity(new Intent(LoginActivity.this, OrderViewActivity.class));
             }
         });
 
