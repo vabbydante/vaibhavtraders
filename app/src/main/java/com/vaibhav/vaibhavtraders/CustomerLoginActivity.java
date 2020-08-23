@@ -29,6 +29,8 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+import es.dmoral.toasty.Toasty;
+
 public class CustomerLoginActivity extends AppCompatActivity {
 
     private Button customerLogin;
@@ -187,9 +189,15 @@ public class CustomerLoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    /*if(firebaseAuth.getUid() == null){
+                                        Toasty.error(CustomerLoginActivity.this, "You have to register first!", Toasty.LENGTH_LONG).show();
+                                        progressDialog.dismiss();
+                                        return;
+                                    }*/
                                     //verification successful we will start the order activity
                                     progressDialog.dismiss();
-                                    Toast.makeText(CustomerLoginActivity.this, "You're now logged in", Toast.LENGTH_LONG).show();
+                                    //Toast.makeText(CustomerLoginActivity.this, "You're now logged in", Toast.LENGTH_LONG).show();
+                                    Toasty.success(CustomerLoginActivity.this, "You are now logged in", Toasty.LENGTH_LONG).show();  //trying the new toasty toast here
                                     finish();
                                     startActivity(new Intent(CustomerLoginActivity.this, OrderActivity.class));
                                 } else {
@@ -201,7 +209,8 @@ public class CustomerLoginActivity extends AppCompatActivity {
                                         progressDialog.dismiss();
                                         message = "Invalid code entered...";
                                     }
-                                    Toast.makeText(CustomerLoginActivity.this,message,Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(CustomerLoginActivity.this,message,Toast.LENGTH_SHORT).show();
+                                    Toasty.error(CustomerLoginActivity.this, message, Toasty.LENGTH_LONG).show();
                                 }
                             }
                         });

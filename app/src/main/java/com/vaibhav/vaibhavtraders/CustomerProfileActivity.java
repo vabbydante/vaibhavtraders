@@ -26,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import es.dmoral.toasty.Toasty;
+
 public class CustomerProfileActivity extends AppCompatActivity {
 
     private TextView storeName;
@@ -91,7 +93,8 @@ public class CustomerProfileActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(CustomerProfileActivity.this, "Cannot get user information. Try again later.", Toast.LENGTH_LONG).show();
+                //Toast.makeText(CustomerProfileActivity.this, "Cannot get user information. Try again later.", Toast.LENGTH_LONG).show();
+                Toasty.warning(CustomerProfileActivity.this, "Cannot get user information. Try again later.", Toasty.LENGTH_LONG).show();
             }
         });
 

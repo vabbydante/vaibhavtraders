@@ -26,6 +26,8 @@ import com.google.firebase.iid.InstanceIdResult;
 
 import org.w3c.dom.Text;
 
+import es.dmoral.toasty.Toasty;
+
 public class UpdateActivity extends AppCompatActivity {
 
     private EditText newStoreName;
@@ -91,7 +93,8 @@ public class UpdateActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(UpdateActivity.this, "Cannot get user information", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(UpdateActivity.this, "Cannot get user information", Toast.LENGTH_SHORT).show();
+                Toasty.error(UpdateActivity.this, "Cannot get user information", Toasty.LENGTH_SHORT).show();
             }
         });
         save.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +108,8 @@ public class UpdateActivity extends AppCompatActivity {
                 UserProfile userProfile = new UserProfile(name, number, storename, fcm);
 
                 databaseReference.setValue(userProfile);
-                Toast.makeText(UpdateActivity.this, "Profile Updated.", Toast.LENGTH_LONG).show();
+                //Toast.makeText(UpdateActivity.this, "Profile Updated.", Toast.LENGTH_LONG).show();
+                Toasty.success(UpdateActivity.this, "Profile Updated.", Toasty.LENGTH_LONG).show();
                 finish();
             }
         });

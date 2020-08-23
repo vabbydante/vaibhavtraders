@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import es.dmoral.toasty.Toasty;
+
 public class NextRegistrationActivity extends AppCompatActivity {
 
     private EditText regCustomerName;
@@ -65,7 +67,8 @@ public class NextRegistrationActivity extends AppCompatActivity {
                         // Log and toast
                         String msg = getString(R.string.msg_token_fmt, token);
                         Log.d(TAG, msg);
-                        Toast.makeText(NextRegistrationActivity.this, "Token generated", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(NextRegistrationActivity.this, "Token generated", Toast.LENGTH_SHORT).show();
+                        Toasty.info(NextRegistrationActivity.this, "Token generated", Toasty.LENGTH_SHORT).show();
                         regTokenDisplay.setText(msg);
                     }
                 });
@@ -86,7 +89,8 @@ public class NextRegistrationActivity extends AppCompatActivity {
                         regCustomerNumber.requestFocus();
                     }
                     sendUserData();
-                    Toast.makeText(NextRegistrationActivity.this, "Successfully Registered.", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(NextRegistrationActivity.this, "Successfully Registered. Start ordering.", Toast.LENGTH_LONG).show();
+                    Toasty.success(NextRegistrationActivity.this, "Successfully Registered. Start ordering.", Toasty.LENGTH_LONG).show();
                     startActivity(new Intent(NextRegistrationActivity.this, OrderActivity.class));
                     finish();
                 }
@@ -102,7 +106,8 @@ public class NextRegistrationActivity extends AppCompatActivity {
         fcm = regTokenDisplay.getText().toString();
 
         if (number.isEmpty() || storename.isEmpty() || name.isEmpty()) {
-            Toast.makeText(NextRegistrationActivity.this, "Please enter all the details", Toast.LENGTH_LONG).show();
+            //Toast.makeText(NextRegistrationActivity.this, "Please enter all the details", Toast.LENGTH_LONG).show();
+            Toasty.warning(NextRegistrationActivity.this, "Please enter all the details", Toasty.LENGTH_LONG).show();
         } else {
             result = true;
         }

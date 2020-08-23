@@ -31,6 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+import es.dmoral.toasty.Toasty;
+
 public class CustomerRegistrationActivity extends AppCompatActivity {
 
     private EditText regContact;
@@ -138,7 +140,8 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
                 @Override
                 public void onVerificationFailed(FirebaseException e) {
                     progressDialog.dismiss();
-                    Toast.makeText(CustomerRegistrationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(CustomerRegistrationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toasty.error(CustomerRegistrationActivity.this, e.getMessage(), Toasty.LENGTH_LONG).show();
                     Log.e("TAG", Objects.requireNonNull(e.getMessage()));
                 }
 
@@ -169,7 +172,8 @@ public class CustomerRegistrationActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     //verification successful we will start the profile activity
                                     progressDialog.dismiss();
-                                    Toast.makeText(CustomerRegistrationActivity.this, "Successfully Registered. Enter details here to complete registration", Toast.LENGTH_LONG).show();
+                                    //Toast.makeText(CustomerRegistrationActivity.this, "Successfully Registered. Enter details here to complete registration", Toast.LENGTH_LONG).show();
+                                    Toasty.success(CustomerRegistrationActivity.this, "Successfully Registered. Enter details here to complete registration", Toasty.LENGTH_LONG).show();
                                     startActivity(new Intent(CustomerRegistrationActivity.this, NextRegistrationActivity.class));
                                     finish();
                                 } else {

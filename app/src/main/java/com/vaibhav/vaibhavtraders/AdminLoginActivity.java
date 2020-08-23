@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import es.dmoral.toasty.Toasty;
+
 public class AdminLoginActivity extends AppCompatActivity {
 
     private EditText Email;
@@ -48,10 +50,12 @@ public class AdminLoginActivity extends AppCompatActivity {
             startActivity(new Intent(AdminLoginActivity.this, OrderViewActivity.class));
         }else{
             counter--;
-            Toast.makeText(AdminLoginActivity.this, "Email/Phone No or Password is wrong.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(AdminLoginActivity.this, "Email/Phone No or Password is wrong.", Toast.LENGTH_SHORT).show();
+            Toasty.warning(AdminLoginActivity.this, "Email/Phone No or Password is wrong.", Toasty.LENGTH_SHORT).show();
             Info.setText("No of attempts remaining : " + counter);
             if(counter == 0){
-                Toast.makeText(AdminLoginActivity.this, "Admin login button disabled for security", Toast.LENGTH_LONG).show();
+                //Toast.makeText(AdminLoginActivity.this, "Admin login button disabled for security", Toast.LENGTH_LONG).show();
+                Toasty.error(AdminLoginActivity.this, "Admin login button disabled for security", Toasty.LENGTH_LONG).show();
                 Login.setEnabled(false);
             }
         }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,11 +35,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
+
 public class OrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     String itemTag, quantityTag;
     String date_n = new
-            SimpleDateFormat("dd.MM.yyyy HH:mm:ss a", Locale.getDefault()).format(new Date());
+            SimpleDateFormat("dd.MM.yyyy hh:mm:ss a", Locale.getDefault()).format(new Date());
     private Spinner quantitySpinner;
     private Spinner itemSpinner;
     private TextView orderDisplay;
@@ -111,18 +114,26 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(firebaseAuth.getUid());
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(firebaseAuth.getUid());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                DisplayStoreModel displayStoreModel = snapshot.getValue(DisplayStoreModel.class);
-                displayStore.setText("" + displayStoreModel.getUserStoreName());
-            }
+                    DisplayStoreModel displayStoreModel = snapshot.getValue(DisplayStoreModel.class);
+                    if(displayStoreModel != null) {
+                        displayStore.setText("" + displayStoreModel.getUserStoreName());
+                    }else{
+                        //displayStore.setText("New users have to REGISTER FIRST!/nOr the app won't work!");
+                        Toasty.error(OrderActivity.this, "Please REGISTER here first!", Toasty.LENGTH_LONG).show();
+                        startActivity(new Intent(OrderActivity.this, NextRegistrationActivity.class));
+                    }
+                }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(OrderActivity.this, "Cannot get user information. Try again later.", Toast.LENGTH_LONG).show();
+                //Toast.makeText(OrderActivity.this, "Cannot get user information. Try again later.", Toast.LENGTH_LONG).show();
+                Toasty.error(OrderActivity.this, "Cannot get user information. Try again later.", Toasty.LENGTH_LONG).show();
             }
         });
 
@@ -169,6 +180,7 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
 
     private void Logout(){
         firebaseAuth.signOut();
+        Toasty.success(OrderActivity.this, "You are now successfully logged out. Login again to continue.", Toasty.LENGTH_LONG).show();
         finish();
         startActivity(new Intent(OrderActivity.this, CustomerLoginActivity.class));
     }
@@ -206,7 +218,8 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
 
             case R.id.orderMenu:{
                 order();
-                Toast.makeText(OrderActivity.this, "Order Placed!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(OrderActivity.this, "Order Placed!", Toast.LENGTH_LONG).show();
+                Toasty.success(OrderActivity.this, "Order Placed!", Toasty.LENGTH_LONG).show();
                 break;
             }
             case R.id.profileMenu:{
@@ -214,7 +227,8 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
                 break;
             }
             case R.id.orderHistoryMenu:{
-                Toast.makeText(OrderActivity.this, "Order History menu under development", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(OrderActivity.this, "Order History menu under development", Toast.LENGTH_SHORT).show();
+                Toasty.info(OrderActivity.this, "Order History menu under development", Toasty.LENGTH_SHORT).show();
                 break;
             }
             case R.id.refreshMenu:{
@@ -222,11 +236,13 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
                 overridePendingTransition(0, 0);
                 startActivity(getIntent());
                 overridePendingTransition(0, 0);
+                Toasty.success(OrderActivity.this, "Orderlist refreshed", Toasty.LENGTH_SHORT).show();
                 break;
             }
             case R.id.helpMenu:{
                 //startActivity(new Intent(OrderActivity.this, HelpActivity.class));
-                Toast.makeText(this, "Help section will be added in upcoming update soon", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "Help section will be added in upcoming update soon", Toast.LENGTH_LONG).show();
+                Toasty.info(this, "Help section will be added in upcoming update soon", Toasty.LENGTH_LONG).show();
                 break;
             }
             case R.id.contactMenu:{
@@ -240,7 +256,8 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
             case R.id.updateMenu:{
                 //Development stage here!
                 //updateCheckSnackbar();
-                Toast.makeText(this, "Feature under development!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Feature under development!", Toast.LENGTH_SHORT).show();
+                Toasty.info(this, "Feature under development!", Toasty.LENGTH_SHORT).show();
                 break;
             }
             case R.id.logoutMenu:{
