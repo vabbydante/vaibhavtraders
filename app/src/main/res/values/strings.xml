@@ -21,6 +21,7 @@
     <string name="message_download_failed">Cannot download at this time!</string>
     <string name="downloading_update_dialog">Downloading update!</string>
     <string name="retailer_login">Retailer Login</string>
+    <string name="swipe_left_or_right_to_delete"><![CDATA[<- Swipe LEFT or RIGHT to delete ->]]></string>
     <!--<string-array name="Items">
         <item>bhujiya sev 5rs</item>
         <item>Aloo Bhujiya 5rs</item>
