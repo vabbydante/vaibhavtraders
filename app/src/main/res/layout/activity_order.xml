@@ -8,7 +8,7 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="301dp"
+        android:layout_width="350dp"
         android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,7 @@
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="301dp"
+        android:layout_width="350dp"
         android:layout_height="42dp"
         android:layout_marginTop="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,19 +44,19 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
-        android:layout_width="match_parent"
+        android:layout_width="400dp"
         android:layout_height="200dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCurrentDate"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/btnAddCustomItem">
 
-        <TextView
+        <EditText
             android:id="@+id/tvOrderDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="400dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="100dp"
             android:textStyle="bold"
@@ -97,20 +97,65 @@
         app:layout_constraintTop_toBottomOf="@+id/tvDisplayStore"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textView9"
+    <CheckBox
+        android:id="@+id/customItemCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Tip : You can reset your orderlist by\nclicking on the 'Refresh' button in the menu \n(press the top-right 3-dot to find it)"
-        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="428dp"
+        android:clickable="true"
+        android:text="Want to add your custom items?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCurrentDate"
+        app:layout_constraintVertical_bias="0.0"
+        android:focusable="true" />
+
+    <EditText
+        android:id="@+id/etCustomItem"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Enter your custom item name here"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/customItemCheckbox"
+        app:layout_constraintVertical_bias="0.007" />
+
+    <EditText
+        android:id="@+id/etCustomQuantity"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:ems="10"
+        android:hint="Enter custom quantity."
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCustomItem"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnAddCustomItem"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="244dp"
+        android:background="@drawable/rounded_corners"
+        android:text="Add Custom Item"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/etCustomQuantity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

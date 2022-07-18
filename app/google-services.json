@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "946238612373-ig50dsmk7cubmdf6ld7qsk07rin4kgq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vaibhav.vaibhavtraders",
+            "certificate_hash": "f1a626863c23ce33e77de02fb180bde4c6ab292f"
+          }
+        },
+        {
           "client_id": "946238612373-kv4ntjcndev9lqlib1ps1uqs3hhm47nf.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +23,9 @@ import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
 import com.github.javiersantos.appupdater.enums.Duration;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,8 +54,13 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
     private TextView displayStore;
     private TextView displayCurrentDate;
     private Button addItem;
+    private Button addCustomItem;
+    private EditText customItem;
+    private EditText customQuantity;
+    //    private FloatingActionButton fab;
     //private Button test;
     FirebaseAuth firebaseAuth;
+    private FloatingActionButton mainFabButton;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference orderRef = db.collection("orderdata");
@@ -58,6 +69,15 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+
+        FirebaseApp.initializeApp(this);
+
+        addCustomItem = findViewById(R.id.btnAddCustomItem);
+        customItem = findViewById(R.id.etCustomItem);
+        customQuantity = findViewById(R.id.etCustomQuantity);
+        CheckBox customEnableCheckbox = findViewById(R.id.customItemCheckbox);
+
+        customEnableCheckbox.setVisibility(View.INVISIBLE);
 
         //setting up UI Views and setting ArrayAdapters for the spinners. (using the 'string-array' resource from strings.xml)
         itemSpinner = findViewById(R.id.spinner);
@@ -133,7 +153,7 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 //Toast.makeText(OrderActivity.this, "Cannot get user information. Try again later.", Toast.LENGTH_LONG).show();
-                Toasty.error(OrderActivity.this, "Cannot get user information. Try again later.", Toasty.LENGTH_LONG).show();
+                //Toasty.error(OrderActivity.this, "Cannot get user information. Try again later.", Toasty.LENGTH_LONG).show();
             }
         });
 
@@ -164,7 +184,27 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                orderDisplay.append("-->  " + itemTag + " - " + quantityTag + "\n");
+                if(itemTag.equals("Choose Item")||quantityTag.equals(("Choose Quantity"))){
+                    Toasty.error(OrderActivity.this, "Please select atleast one item and quantity", Toasty.LENGTH_LONG).show();
+                }
+                else{
+                    orderDisplay.append("-->  " + itemTag + " - " + quantityTag + "\n");
+                }
+            }
+        });
+
+        addCustomItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //custom item functionality here...
+
+                if(customItem.getText().toString().isEmpty() || customQuantity.getText().toString().isEmpty())
+                {
+                    Toasty.error(OrderActivity.this, "Please first enter custom Item and Quantity to add!", Toasty.LENGTH_LONG).show();
+                }
+                else {
+                    orderDisplay.append("--> " + customItem.getText().toString() + " - " + customQuantity.getText().toString() + " packets" + "\n");
+                }
             }
         });
 
@@ -179,7 +219,7 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     private void Logout(){
-        firebaseAuth.signOut();
+        FirebaseAuth.getInstance().signOut();
         Toasty.success(OrderActivity.this, "You are now successfully logged out. Login again to continue.", Toasty.LENGTH_LONG).show();
         finish();
         startActivity(new Intent(OrderActivity.this, CustomerLoginActivity.class));
